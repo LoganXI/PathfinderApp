@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35004.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathfinderApp.Server", "PathfinderApp.Server\PathfinderApp.Server.csproj", "{992F58FC-B70F-4729-8B58-F41527BDC64E}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "pathfinderapp.client", "pathfinderapp.client\pathfinderapp.client.esproj", "{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{992F58FC-B70F-4729-8B58-F41527BDC64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{992F58FC-B70F-4729-8B58-F41527BDC64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{992F58FC-B70F-4729-8B58-F41527BDC64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{992F58FC-B70F-4729-8B58-F41527BDC64E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA0A53C-A0A9-4A91-AF17-93E09A73C34D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7AA714B-D4C4-4095-A71D-429D159CD8FD}
+	EndGlobalSection
+EndGlobal
