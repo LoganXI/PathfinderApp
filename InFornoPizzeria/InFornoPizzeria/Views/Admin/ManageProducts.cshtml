@@ -1,0 +1,77 @@
+﻿@model IEnumerable<InFornoPizzeria.Models.Product>
+
+@{
+    ViewData["Title"] = "Gestione Prodotti";
+}
+
+<h2>Gestione Prodotti</h2>
+
+<p>
+    <a asp-action="CreateProduct" class="btn btn-primary">Aggiungi Nuovo Prodotto</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Immagine</th>
+            <th>Nome</th>
+            <th>Prezzo</th>
+            <th>Tempo di Consegna</th>
+            <th>Ingredienti</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td><img src="@product.PhotoUrl" alt="@product.Name" width="100" height="100"></td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>@product.DeliveryTime minuti</td>
+                <td>
+                    @foreach (var ingredient in product.ProductIngredients.Select(pi => pi.Ingredient.Name))
+                    {
+                        <span>@ingredient</span>
+                        <br />
+                    }
+                </td>
+                <td>
+                    <a asp-action="EditProduct" asp-route-id="@product.Id" class="btn btn-warning">Modifica</a>
+                    <button type="button" class="btn btn-danger" onclick="confirmDelete(@product.Id)">Elimina</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function confirmDelete(id) {
+            if (confirm("Sei sicuro di voler eliminare questo prodotto?")) {
+                $.ajax({
+                    url: '@Url.Action("DeleteProduct", "Admin")',
+                    type: 'POST',
+                    headers: {
+                        'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                    },
+                    data: {
+                        id: id
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            alert("Prodotto eliminato con successo.");
+                            location.reload();
+                        } else {
+                            alert("Errore durante l'eliminazione del prodotto: " + result.message);
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Errore durante l'eliminazione del prodotto.");
+                    }
+                });
+            }
+        }
+    </script>
+}
