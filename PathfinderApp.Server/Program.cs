@@ -36,6 +36,14 @@ namespace PathfinderApp.Server
                 app.UseSwaggerUI();
             }
 
+            // Aggiungi il middleware per l'uso delle API
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();  // Assicura che i controller API siano mappati
+            });
+
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
