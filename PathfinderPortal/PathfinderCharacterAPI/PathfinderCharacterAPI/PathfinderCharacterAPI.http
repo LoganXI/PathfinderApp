@@ -1,0 +1,6 @@
+@PathfinderCharacterAPI_HostAddress = http://localhost:5009
+
+GET {{PathfinderCharacterAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
