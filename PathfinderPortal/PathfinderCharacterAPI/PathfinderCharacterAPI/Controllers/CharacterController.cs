@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PathfinderCharacterAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class CharacterController : Controller
@@ -11,5 +13,12 @@ namespace PathfinderCharacterAPI.Controllers
         {
             return Ok(new { Message = "Character API is running!" });
         }
+
+        [HttpGet("ping")]
+        public IActionResult Ping()
+        {
+            return Ok("Pong");
+        }
+
     }
 }

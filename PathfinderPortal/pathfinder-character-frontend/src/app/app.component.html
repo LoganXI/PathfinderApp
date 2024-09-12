@@ -1,0 +1,6 @@
+<nav>
+  <a routerLink="/login">Login</a>
+  <a routerLink="/profile" *ngIf="authService.isLoggedIn()">Profile</a> <!-- Show only if logged in -->
+</nav>
+
+<router-outlet></router-outlet>
