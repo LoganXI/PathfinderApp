@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard'; // Import the AuthGuard
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] }, // Protected route
-  { path: 'login', component: LoginComponent }, // Public route
-  { path: '**', redirectTo: 'login' } // Redirect any unknown paths to login
+  { path: '**', redirectTo: 'login' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' }  // Redirect root to login
 ];
 
 @NgModule({

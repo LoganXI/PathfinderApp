@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PathfinderCharacterAPI.Data;
 
@@ -10,9 +11,11 @@ using PathfinderCharacterAPI.Data;
 namespace PathfinderCharacterAPI.Migrations
 {
     [DbContext(typeof(CharacterContext))]
-    partial class CharacterContextModelSnapshot : ModelSnapshot
+    [Migration("20240914150446_AddUserTable")]
+    partial class AddUserTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

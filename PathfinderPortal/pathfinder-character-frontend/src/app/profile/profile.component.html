@@ -1,2 +1,5 @@
-<h1>User Profile</h1>
-<p>Welcome to your profile page!</p>
+<div *ngIf="userData">
+  <h2>Welcome, {{ userData.username }}</h2>
+  <p>Email: {{ userData.email }}</p>
+</div>
+<button (click)="logout()">Logout</button>
