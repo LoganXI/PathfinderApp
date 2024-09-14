@@ -1,0 +1,92 @@
+<h2>Create a New Character</h2>
+<form (ngSubmit)="onSubmit()" #characterForm="ngForm">
+  <!-- Basic Information -->
+  <div>
+    <label for="name">Character Name</label>
+    <input type="text" id="name" required [(ngModel)]="character.name" name="name">
+  </div>
+  <div>
+    <label for="playerName">Player Name</label>
+    <input type="text" id="playerName" [(ngModel)]="character.playerName" name="playerName">
+  </div>
+  <div>
+    <label for="class">Class</label>
+    <input type="text" id="class" required [(ngModel)]="character.class" name="class">
+  </div>
+  <div>
+    <label for="level">Level</label>
+    <input type="number" id="level" [(ngModel)]="character.level" name="level">
+  </div>
+  <div>
+    <label for="alignment">Alignment</label>
+    <input type="text" id="alignment" [(ngModel)]="character.alignment" name="alignment">
+  </div>
+  <div>
+    <label for="deity">Deity</label>
+    <input type="text" id="deity" [(ngModel)]="character.deity" name="deity">
+  </div>
+  <div>
+    <label for="experiencePoints">Experience Points</label>
+    <input type="number" id="experiencePoints" [(ngModel)]="character.experiencePoints" name="experiencePoints">
+  </div>
+
+  <!-- Ability Scores -->
+  <div>
+    <h3>Ability Scores</h3>
+    <label for="strength">Strength</label>
+    <input type="number" id="strength" [(ngModel)]="character.strength" name="strength">
+    <label for="dexterity">Dexterity</label>
+    <input type="number" id="dexterity" [(ngModel)]="character.dexterity" name="dexterity">
+    <label for="constitution">Constitution</label>
+    <input type="number" id="constitution" [(ngModel)]="character.constitution" name="constitution">
+    <label for="intelligence">Intelligence</label>
+    <input type="number" id="intelligence" [(ngModel)]="character.intelligence" name="intelligence">
+    <label for="wisdom">Wisdom</label>
+    <input type="number" id="wisdom" [(ngModel)]="character.wisdom" name="wisdom">
+    <label for="charisma">Charisma</label>
+    <input type="number" id="charisma" [(ngModel)]="character.charisma" name="charisma">
+  </div>
+
+  <!-- Combat Statistics -->
+  <div>
+    <h3>Combat Statistics</h3>
+    <label for="initiative">Initiative</label>
+    <input type="number" id="initiative" [(ngModel)]="character.initiative" name="initiative">
+    <label for="armorClass">Armor Class</label>
+    <input type="number" id="armorClass" [(ngModel)]="character.armorClass" name="armorClass">
+    <label for="touchAC">Touch AC</label>
+    <input type="number" id="touchAC" [(ngModel)]="character.touchAC" name="touchAC">
+    <label for="flatFootedAC">Flat-Footed AC</label>
+    <input type="number" id="flatFootedAC" [(ngModel)]="character.flatFootedAC" name="flatFootedAC">
+    <label for="cmd">CMD</label>
+    <input type="number" id="cmd" [(ngModel)]="character.cmd" name="cmd">
+    <label for="cmb">CMB</label>
+    <input type="number" id="cmb" [(ngModel)]="character.cmb" name="cmb">
+    <label for="baseAttackBonus">Base Attack Bonus</label>
+    <input type="number" id="baseAttackBonus" [(ngModel)]="character.baseAttackBonus" name="baseAttackBonus">
+  </div>
+
+  <!-- Saving Throws -->
+  <div>
+    <h3>Saving Throws</h3>
+    <label for="fortitudeSave">Fortitude Save</label>
+    <input type="number" id="fortitudeSave" [(ngModel)]="character.fortitudeSave" name="fortitudeSave">
+    <label for="reflexSave">Reflex Save</label>
+    <input type="number" id="reflexSave" [(ngModel)]="character.reflexSave" name="reflexSave">
+    <label for="willSave">Will Save</label>
+    <input type="number" id="willSave" [(ngModel)]="character.willSave" name="willSave">
+  </div>
+
+  <!-- Weapons, Skills, Special Abilities -->
+  <div>
+    <label for="weapons">Weapons</label>
+    <textarea id="weapons" [(ngModel)]="character.weapons" name="weapons"></textarea>
+    <label for="skills">Skills</label>
+    <textarea id="skills" [(ngModel)]="character.skills" name="skills"></textarea>
+    <label for="specialAbilities">Special Abilities</label>
+    <textarea id="specialAbilities" [(ngModel)]="character.specialAbilities" name="specialAbilities"></textarea>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit">Create Character</button>
+</form>

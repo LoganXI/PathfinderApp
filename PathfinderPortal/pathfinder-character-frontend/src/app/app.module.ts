@@ -8,12 +8,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import { NgModule } from '@angular/core';
+import { CharacterComponent } from './character/character.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CharactersComponent } from './characters/characters.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    CharacterComponent,
+    NavbarComponent,
+    CharactersComponent
   ],
   imports: [
     BrowserModule,

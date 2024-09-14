@@ -42,6 +42,9 @@
 
         // Special Abilities/Feats
         public string SpecialAbilities { get; set; }  // Comma-separated for simplicity
+
+        public int UserId { get; set; } // Foreign key
+        public User User { get; set; }  // Navigation property
     }
 }
  

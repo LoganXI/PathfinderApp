@@ -4,7 +4,10 @@
     {
         public int Id { get; set; }
         public string Username { get; set; }
-        public string PasswordHash { get; set; } // Store hashed passwords
         public string Email { get; set; }
+        public string PasswordHash { get; set; }
+
+        // Navigation property to link with characters
+        public List<Character> Characters { get; set; }
     }
 }
