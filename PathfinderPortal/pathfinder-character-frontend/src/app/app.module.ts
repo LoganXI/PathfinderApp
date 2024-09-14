@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { ApiService } from './services/api.service';
 import { LoginComponent } from './login/login.component';
-import { ProfileComponent } from './profile/profile.component'; // Import your service
+import { ProfileComponent } from './profile/profile.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './services/auth-interceptor.service';
+import { NgModule } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -16,11 +17,16 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule  // Add HttpClientModule here
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [ApiService],  // Add ApiService here if it's not providedIn: 'root'
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true // Allows multiple interceptors
+    }
+  ],
   bootstrap: [AppComponent]
-
 })
 export class AppModule { }

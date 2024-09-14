@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
+using PathfinderCharacterAPI.Data;
 
 namespace PathfinderCharacterAPI
 {
@@ -20,6 +22,12 @@ namespace PathfinderCharacterAPI
             builder.Services.AddControllers();
             builder.Services.AddSwaggerGen();
 
+            // Configure EF Core to use SQL Server
+            builder.Services.AddDbContext<CharacterContext>(options => 
+            options.UseSqlServer(builder.Configuration.GetConnectionString("CharacterDatabase")));
+
+           
+
             // CORS configuration
             builder.Services.AddCors(options =>
             {
@@ -30,7 +38,8 @@ namespace PathfinderCharacterAPI
             });
 
             // JWT Configuration
-            var key = Encoding.ASCII.GetBytes("YourSecretKeyForJWTEncryption"); // Use a strong key here
+            //var key = Encoding.ASCII.GetBytes("YourSecretKeyForJWTEncryption"); // Use a strong key here
+            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Secret"]);
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -45,6 +54,13 @@ namespace PathfinderCharacterAPI
                 });
 
             var app = builder.Build();
+
+            // Create Database at startup if it doesn't exist
+            using (var scope = app.Services.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<CharacterContext>();
+                context.Database.EnsureCreated();
+            }
 
             if (app.Environment.IsDevelopment())
             {
