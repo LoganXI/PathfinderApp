@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using BCrypt.Net;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -21,25 +22,32 @@ public class AuthController : ControllerBase
         _configuration = configuration;
     }
 
-    // Register a new user
+
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] User user)
+    public async Task<IActionResult> Register([FromBody] RegisterUserDTO registerUser)
     {
         // Check if username already exists
-        if (await _context.Users.AnyAsync(u => u.Username == user.Username))
+        if (await _context.Users.AnyAsync(u => u.Username == registerUser.Username))
         {
             return BadRequest("Username already exists.");
         }
 
-        // Hash the password before storing it
-        user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.PasswordHash);
+        // Create a new User object
+        var user = new User
+        {
+            Username = registerUser.Username,
+            Email = registerUser.Email,
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(registerUser.Password) // Hash the password
+        };
 
         // Add the new user to the database
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
-        return Ok("User registered successfully.");
+        return Ok(new { message = "User registered successfully" });
     }
+
+
 
     // Login and generate JWT token
     [HttpPost("login")]
@@ -54,7 +62,12 @@ public class AuthController : ControllerBase
 
         // Generate JWT token
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Secret"]);
+        var jwtSecret = _configuration.GetSection("Jwt:Secret").Value;
+        if (string.IsNullOrEmpty(jwtSecret))
+        {
+            throw new InvalidOperationException("JWT secret is missing.");
+        }
+        var key = Convert.FromBase64String(_configuration["Jwt:Secret"]);
 
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -68,4 +81,7 @@ public class AuthController : ControllerBase
 
         return Ok(new { Token = tokenString });
     }
+
+
+
 }

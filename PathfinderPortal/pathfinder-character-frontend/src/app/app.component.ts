@@ -21,21 +21,21 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     // Check if the user is logged in
-    if (this.authService.isLoggedIn()) {
-      // User is logged in, make API calls
-      this.apiService.getCharacterStatus().subscribe({
-        next: (response) => this.characterStatusMessage = response.message,
-        error: (err) => console.error('Error fetching character status', err),
-      });
+    // if (this.authService.isLoggedIn()) {
+    //   // User is logged in, make API calls
+    //   this.apiService.getCharacterStatus().subscribe({
+    //     next: (response) => this.characterStatusMessage = response.message,
+    //     error: (err) => console.error('Error fetching character status', err),
+    //   });
 
-      this.apiService.pingCharacterApi().subscribe({
-        next: (response) => this.pingResponse = response,
-        error: (err) => console.error('Error pinging character API', err),
-      });
-    } else {
-      // User is not logged in, redirect to the login page
-      console.log('User is not logged in, redirecting to login page');
-      this.router.navigate(['/login']);
-    }
+    //   this.apiService.pingCharacterApi().subscribe({
+    //     next: (response) => this.pingResponse = response,
+    //     error: (err) => console.error('Error pinging character API', err),
+    //   });
+    // } else {
+    //   // User is not logged in, redirect to the login page
+    //   console.log('User is not logged in, redirecting to login page');
+    //   this.router.navigate(['/login']);
+    // }
   }
 }

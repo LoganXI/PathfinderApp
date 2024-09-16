@@ -3,6 +3,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using PathfinderCharacterAPI.Data;
+using PathfinderCharacterAPI.Services;
 
 namespace PathfinderCharacterAPI
 {
@@ -26,7 +27,8 @@ namespace PathfinderCharacterAPI
             builder.Services.AddDbContext<CharacterContext>(options => 
             options.UseSqlServer(builder.Configuration.GetConnectionString("CharacterDatabase")));
 
-           
+
+            builder.Services.AddScoped<IUserService, UserService>();
 
             // CORS configuration
             builder.Services.AddCors(options =>
@@ -34,12 +36,12 @@ namespace PathfinderCharacterAPI
                 options.AddPolicy("AllowAngular",
                     builder => builder.WithOrigins("http://localhost:4200")
                                       .AllowAnyHeader()
-                                      .AllowAnyMethod());
+                                      .AllowAnyMethod()
+                                      .AllowCredentials());
             });
-
             // JWT Configuration
             //var key = Encoding.ASCII.GetBytes("YourSecretKeyForJWTEncryption"); // Use a strong key here
-            var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Secret"]);
+            var key = Convert.FromBase64String(builder.Configuration["Jwt:Secret"]);
 
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -47,11 +49,13 @@ namespace PathfinderCharacterAPI
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        IssuerSigningKey = new SymmetricSecurityKey(key),  // Base64-decoded key
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.FromMinutes(5)
                     };
                 });
+
 
             var app = builder.Build();
 

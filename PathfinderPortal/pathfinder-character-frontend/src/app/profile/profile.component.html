@@ -1,5 +1,5 @@
-<div *ngIf="userData">
-  <h2>Welcome, {{ userData.username }}</h2>
-  <p>Email: {{ userData.email }}</p>
+<h2>Profile</h2>
+<div *ngIf="userProfile">
+  <p><strong>Username:</strong> {{ userProfile.username }}</p>
+  <p><strong>Email:</strong> {{ userProfile.email }}</p>
 </div>
-<button (click)="logout()">Logout</button>

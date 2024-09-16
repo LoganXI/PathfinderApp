@@ -11,6 +11,7 @@ import { NgModule } from '@angular/core';
 import { CharacterComponent } from './character/character.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CharactersComponent } from './characters/characters.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CharactersComponent } from './characters/characters.component';
     ProfileComponent,
     CharacterComponent,
     NavbarComponent,
-    CharactersComponent
+    CharactersComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

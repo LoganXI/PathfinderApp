@@ -6,8 +6,10 @@ import { CharacterComponent } from './character/character.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { CharactersComponent } from './characters/characters.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
+  { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'create-character', component: CharacterComponent, canActivate: [AuthGuard] },
   { path: 'characters', component: CharactersComponent, canActivate: [AuthGuard] },
