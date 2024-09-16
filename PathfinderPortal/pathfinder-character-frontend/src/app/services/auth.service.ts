@@ -9,10 +9,12 @@ export class AuthService {
   // Save JWT to localStorage
   saveToken(token: string) {
     localStorage.setItem('authToken', token);
+    console.log("LOCAL:", token);
   }
 
   // Get the saved token
   getToken(): string | null {
+    console.log("get TOKEN:", localStorage.getItem('authToken'));
     return localStorage.getItem('authToken');
   }
 

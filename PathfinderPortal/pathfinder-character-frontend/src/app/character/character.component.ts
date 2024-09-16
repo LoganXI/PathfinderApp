@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-character',
@@ -36,18 +37,46 @@ export class CharacterComponent {
     specialAbilities: ''
   };
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    this.http.post('http://localhost:5000/api/character', this.character)
+    // Retrieve the token from localStorage/sessionStorage
+    const token = this.authService.getToken();
+
+    // Make sure the token is available
+    if (!token) {
+      console.error('No token found');
+      return;
+    }
+
+    // Attach the Authorization header with the Bearer token
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    // Make the POST request with headers
+    this.http.post('http://localhost:5000/api/character', this.character, { headers })
       .subscribe(
-        (response) => {
+        response => {
           console.log('Character created successfully', response);
           this.router.navigate(['/characters']); // Redirect to the character list after creation
         },
-        (error) => {
+        error => {
           console.error('Error creating character', error);
         }
       );
   }
+  // constructor(private http: HttpClient, private router: Router) {}
+
+  // onSubmit() {
+  //   this.http.post('http://localhost:5000/api/character', this.character)
+  //     .subscribe(
+  //       (response) => {
+  //         console.log('Character created successfully', response);
+  //         this.router.navigate(['/characters']); // Redirect to the character list after creation
+  //       },
+  //       (error) => {
+  //         console.error('Error creating character', error);
+  //       }
+  //     );
+  // }
 }
+

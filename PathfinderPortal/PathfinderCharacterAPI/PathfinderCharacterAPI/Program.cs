@@ -54,6 +54,20 @@ namespace PathfinderCharacterAPI
                         ValidateAudience = false,
                         ClockSkew = TimeSpan.FromMinutes(5)
                     };
+                    // Adding event handlers for logging authentication failure and success DA TOGLIERE SE NON VAA!!
+                    options.Events = new JwtBearerEvents
+                    {
+                        OnAuthenticationFailed = context =>
+                        {
+                            Console.WriteLine("Authentication failed: " + context.Exception.Message);
+                            return Task.CompletedTask;
+                        },
+                        OnTokenValidated = context =>
+                        {
+                            Console.WriteLine("Token validated successfully");
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
 
