@@ -44,7 +44,8 @@
         public string SpecialAbilities { get; set; }  // Comma-separated for simplicity
 
         public int UserId { get; set; } // Foreign key
-        public User User { get; set; }  // Navigation property
+        public User? User { get; set; }  // Allow null for the User navigation property
+                                         // Navigation property
     }
 }
  

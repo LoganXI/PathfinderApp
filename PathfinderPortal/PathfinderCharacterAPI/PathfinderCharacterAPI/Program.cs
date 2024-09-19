@@ -4,6 +4,8 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using PathfinderCharacterAPI.Data;
 using PathfinderCharacterAPI.Services;
+using Microsoft.Extensions.Options;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace PathfinderCharacterAPI
 {
@@ -20,11 +22,16 @@ namespace PathfinderCharacterAPI
             });
 
             // Add services to the container.
-            builder.Services.AddControllers();
+            builder.Services.AddControllers()
+                .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                options.JsonSerializerOptions.WriteIndented = true;
+            });
             builder.Services.AddSwaggerGen();
 
             // Configure EF Core to use SQL Server
-            builder.Services.AddDbContext<CharacterContext>(options => 
+            builder.Services.AddDbContext<CharacterContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("CharacterDatabase")));
 
 
@@ -43,23 +50,33 @@ namespace PathfinderCharacterAPI
             //var key = Encoding.ASCII.GetBytes("YourSecretKeyForJWTEncryption"); // Use a strong key here
             var key = Convert.FromBase64String(builder.Configuration["Jwt:Secret"]);
 
-            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
+            builder.Services.AddAuthentication(options => {
+            options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                }).AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(key),  // Base64-decoded key
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ClockSkew = TimeSpan.FromMinutes(5)
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero,
+                        ValidateIssuerSigningKey = true,
+                        //ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                        //ValidAudience = builder.Configuration["Jwt:Audience"],
+                        IssuerSigningKey = new SymmetricSecurityKey(key)
+        
                     };
                     // Adding event handlers for logging authentication failure and success DA TOGLIERE SE NON VAA!!
                     options.Events = new JwtBearerEvents
                     {
                         OnAuthenticationFailed = context =>
                         {
+                            // Get the token from the Authorization header
+                            var token = context.Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
                             Console.WriteLine("Authentication failed: " + context.Exception.Message);
+                            Console.WriteLine("Received token: " + token);
                             return Task.CompletedTask;
                         },
                         OnTokenValidated = context =>

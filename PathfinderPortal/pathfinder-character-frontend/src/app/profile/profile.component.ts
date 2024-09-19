@@ -11,50 +11,50 @@ export class ProfileComponent implements OnInit {
 
   profileData: any;
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
-
-  ngOnInit(): void {
-    const token = this.authService.getToken();
-    console.log('Token:', token);
-    if (!token) {
-      console.error('No token found');
-      return;
-    }
-
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    this.http.get('http://localhost:5000/api/profile', { headers })
-      .subscribe(
-        response => {
-          this.profileData = response;
-        },
-        error => {
-          console.error('Error fetching profile', error);
-        }
-      );
-  }
-  // constructor(private http: HttpClient) {}
+  // constructor(private http: HttpClient, private authService: AuthService) {}
 
   // ngOnInit(): void {
-  //   const token = localStorage.getItem('authToken');  // Get the token from localStorage
+  //   const token = this.authService.getToken();
+  //   console.log('Token:', token); //TOGLIMIII!!!
+  //   if (!token) {
+  //     console.error('No token found');
+  //     return;
+  //   }
 
-  //   if (token) {
-  //     this.http.get('http://localhost:5000/api/profile', {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`
-  //       }
-  //     })
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  //   this.http.get('http://localhost:5000/api/profile', { headers })
   //     .subscribe(
-  //       (response: any) => {
-  //         this.userProfile = response;
+  //       response => {
+  //         this.profileData = response;
   //       },
-  //       (error) => {
+  //       error => {
   //         console.error('Error fetching profile', error);
   //       }
   //     );
-  //   } else {
-  //     console.error('No token found');
-  //   }
   // }
+  constructor(private http: HttpClient) {}
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('authToken');  // Get the token from localStorage
+
+    if (token) {
+      this.http.get('http://localhost:5000/api/profile', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .subscribe(
+        (response: any) => {
+          this.userProfile = response;
+        },
+        (error) => {
+          console.error('Error fetching profile', error);
+        }
+      );
+    } else {
+      console.error('No token found');
+    }
+  }
 
 }

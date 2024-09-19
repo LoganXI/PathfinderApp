@@ -1,4 +1,6 @@
-﻿namespace PathfinderCharacterAPI.Models
+﻿using System.Text.Json.Serialization;
+
+namespace PathfinderCharacterAPI.Models
 {
     public class User
     {
@@ -8,6 +10,7 @@
         public string PasswordHash { get; set; }
 
         // Navigation property to link with characters
-        public List<Character> Characters { get; set; }
+        [JsonIgnore]  // Prevent circular reference
+        public ICollection<Character> Characters { get; set; }
     }
 }

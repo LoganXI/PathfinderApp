@@ -24,10 +24,27 @@ namespace PathfinderCharacterAPI.Controllers
         public async Task<ActionResult<IEnumerable<Character>>> GetCharacters()
         {
             // Extract the UserId from the JWT token
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            
+
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            Console.WriteLine($"Extracted User ID: {userIdClaim}");
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+                return Unauthorized("User ID not found.");
+            }
+
+            if (!int.TryParse(userIdClaim, out var userId))
+            {
+                return BadRequest("Invalid user ID.");
+            }
+
+            // Return characters for the user
+            var characters = await _context.Characters.Where(c => c.UserId == userId).ToListAsync();
+            return Ok(characters);
+
 
             // Return only the characters belonging to the logged-in user
-            return await _context.Characters.Where(c => c.UserId == userId).ToListAsync();
+            
         }
 
         // Get a specific character by id, ensuring the character belongs to the logged-in user
@@ -35,7 +52,13 @@ namespace PathfinderCharacterAPI.Controllers
         public async Task<ActionResult<Character>> GetCharacter(int id)
         {
             // Extract the UserId from the JWT token
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userIdClaim))
+            {
+                return Unauthorized("User ID not found in token.");
+            }
+
+            var userId = int.Parse(userIdClaim);
 
             // Find the character
             var character = await _context.Characters.FindAsync(id);
@@ -59,8 +82,17 @@ namespace PathfinderCharacterAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Character>> CreateCharacter(Character character)
         {
+
+            var username = User.FindFirst(ClaimTypes.Name)?.Value;
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
             // Extract the UserId from the JWT token
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            var userId = user.Id;
 
             // Set the UserId on the character
             character.UserId = userId;

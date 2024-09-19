@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PathfinderCharacterAPI.Models;
 using PathfinderCharacterAPI.Services;
+using System.Security.Claims;
 
 [Authorize]
 [ApiController]
@@ -18,7 +19,8 @@ public class ProfileController : ControllerBase
     [HttpGet]
     public IActionResult GetProfile()
     {
-        var username = User.Identity.Name;
+
+        var username = User.FindFirst(ClaimTypes.Name)?.Value;
         var userProfile = _userService.GetUserProfileByUsername(username);
 
         if (userProfile == null)

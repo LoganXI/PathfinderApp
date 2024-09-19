@@ -1,0 +1,30 @@
+export interface Character {
+  id?: number;
+  name: string;
+  playerName: string;
+  class: string;
+  level: number;
+  alignment: string;
+  deity: string;
+  experiencePoints: number;
+  strength: number;
+  dexterity: number;
+  constitution: number;
+  intelligence: number;
+  wisdom: number;
+  charisma: number;
+  initiative: number;
+  armorClass: number;
+  touchAC: number;
+  flatFootedAC: number;
+  cmd: number;
+  cmb: number;
+  baseAttackBonus: number;
+  fortitudeSave: number;
+  reflexSave: number;
+  willSave: number;
+  weapons: string;
+  skills: string;
+  specialAbilities: string;
+  userId?: number;
+}

@@ -1,25 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../services/api.service';
+import { Character } from '../models/character.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
   templateUrl: './characters.component.html'
 })
 export class CharactersComponent implements OnInit {
-  characters = [];
+  characters: Character[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
-  ngOnInit() {
-    // Fetch the list of characters
-    this.http.get('http://localhost:5000/api/characters')
-      .subscribe(
-        (data: any) => {
-          this.characters = data;
-        },
-        (error) => {
-          console.error('Error fetching characters', error);
+  ngOnInit(): void {
+    this.apiService.getCharacters().subscribe(
+      (response: any) => {
+        if (response?.$values) {
+          this.characters = response.$values;  // Access the $values array
+        } else {
+          this.characters = [];  // Handle if $values is missing
         }
-      );
+        console.log(this.characters);
+      },
+      error => console.error('Error fetching characters', error)
+    );
   }
+
+  deleteCharacter(id: number): void {
+    this.apiService.deleteCharacter(id).subscribe(() => {
+      this.characters = this.characters.filter(c => c.id !== id);
+    }, error => console.error('Error deleting character', error));
+  }
+
+  editCharacter(character: Character): void {
+    this.router.navigate(['/character/edit'], { state: { character } });
+  }
+
 }
