@@ -41,18 +41,24 @@ export class CharacterComponent implements OnInit {
 
   isUpdate: boolean = false; // Define the isUpdate flag
 
-  constructor(private http: HttpClient, private router: Router, private apiService: ApiService) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private apiService: ApiService
+  ) {}
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    const state = navigation?.extras?.state as { character?: Character };
-
-    if (state?.character) {
+    const state = window.history.state;
+    console.log('Navigating with state:', state);  // Check what you get here
+    if (state && state.character) {
       this.character = state.character;
       this.isUpdate = true;
+      console.log('Edit mode:', this.character);  // See if the character data is here
+    } else {
+      this.isUpdate = false;
+      console.log('No character data, create mode');
     }
   }
-
   onSubmit() {
     if (this.isUpdate) {
       this.apiService.updateCharacter(this.character).subscribe(
@@ -65,15 +71,17 @@ export class CharacterComponent implements OnInit {
         }
       );
     } else {
-      this.http.post('http://localhost:5000/api/character', this.character).subscribe(
-        (response) => {
-          console.log('Character created successfully', response);
-          this.router.navigate(['/characters']);
-        },
-        (error) => {
-          console.error('Error creating character', error);
-        }
-      );
+      this.http
+        .post('http://localhost:5000/api/character', this.character)
+        .subscribe(
+          (response) => {
+            console.log('Character created successfully', response);
+            this.router.navigate(['/characters']);
+          },
+          (error) => {
+            console.error('Error creating character', error);
+          }
+        );
     }
   }
 }

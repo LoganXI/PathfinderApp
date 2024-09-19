@@ -33,7 +33,7 @@ export class CharactersComponent implements OnInit {
   }
 
   editCharacter(character: Character): void {
-    this.router.navigate(['/character/edit'], { state: { character } });
+    console.log('Navigating with character:', character);
+    this.router.navigate(['/create-character'], { state: { character: character } });
   }
-
 }
