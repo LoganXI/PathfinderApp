@@ -58,12 +58,12 @@
           class="nav-link"
           routerLink="/profile"
           aria-label="Go to profile page"
-          ><i class="fas fa-user"></i> Profile</a
+          ><i class="fas fa-user" aria-hidden="true"></i> Profile</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()" aria-label="Log out"
-          ><i class="fas fa-sign-out-alt"></i> Logout</a
+        <a class="nav-link" routerLink="#" aria-label="Log out" (click)="logout()"
+          ><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a
         >
       </li>
     </ol>
