@@ -28,7 +28,7 @@ export class LoginComponent {
       .subscribe(response => {
         // Save the token and navigate to the profile page
         this.authService.saveToken(response.token);
-        this.router.navigate(['/profile']);  // Redirect to profile after login
+        this.router.navigate(['/characters']);  // Redirect to profile after login
       }, error => {
         alert('Login failed');
       });

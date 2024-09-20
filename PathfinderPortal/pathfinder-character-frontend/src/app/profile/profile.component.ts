@@ -4,7 +4,8 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   userProfile: any = {};  // To hold user profile data

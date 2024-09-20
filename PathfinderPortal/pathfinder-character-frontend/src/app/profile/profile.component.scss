@@ -1,0 +1,43 @@
+/* Center the profile content on the screen */
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh; /* Adjusts for vertical centering */
+  background-color: #f0f0f0; /* Light gray background */
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 400px; /* Limit the width of the profile box */
+  margin: 0 auto; /* Center horizontally */
+}
+
+/* Styling for the text */
+h2 {
+  color: #013f06;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.profile-item {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin: 10px 0;
+}
+
+/* Emphasize the labels */
+.profile-item strong {
+  color: #013f06; /* Custom dark green color for emphasis */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .profile-container {
+    width: 90%;
+    padding: 15px;
+  }
+}
