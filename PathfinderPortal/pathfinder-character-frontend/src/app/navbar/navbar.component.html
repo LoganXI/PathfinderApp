@@ -1,58 +1,19 @@
-<!-- <nav>
-  <ul>
-    <li><a routerLink="/profile">Profile</a></li>
-    <li><a routerLink="/create-character">Create Character</a></li>
-    <li><a routerLink="/characters">My Characters</a></li>
-    <li><a (click)="logout()">Logout</a></li>
-  </ul>
-</nav> -->
-<!-- <nav>
-  <div class="nav-logo">
-    <img src="path-to-your-logo/logo.png" alt="Logo" />
-  </div>
-  <ul>
-    <li><a routerLink="/profile">Profile</a></li>
-    <li><a routerLink="/create-character">Create Character</a></li>
-    <li><a routerLink="/characters">My Characters</a></li>
-    <li class="logout-button"><a (click)="logout()">Logout</a></li>
-  </ul>
-</nav> -->
-
-<!-- <head>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-  />
-</head>
-<nav>
-  <div class="nav-logo">
-    <img [src]="'../../Assets/LOGO.png'" alt="Logo" />
-  </div>
-  <ul>
-    <li><a routerLink="/create-character">Create Character</a></li>
-    <li><a routerLink="/characters">My Characters</a></li>
-
-
-    <div class="right-menu">
-      <li>
-        <a routerLink="/profile"><i class="fas fa-user"></i> Profile</a>
-      </li>
-      <li>
-        <a (click)="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
-      </li>
-    </div>
-  </ul>
-</nav> -->
-
 <nav
   class="navbar navbar-expand-lg navbar-light"
   style="background-color: #013f06ce"
   *ngIf="!isLoginRoute()"
+  role="navigation"
+  aria-label="Main navigation"
 >
   <div class="container">
     <!-- Logo -->
     <a class="navbar-brand">
-      <img *ngIf="logoBase64" [src]="logoBase64" alt="Logo" class="nav-logo" />
+      <img
+        *ngIf="logoBase64"
+        [src]="logoBase64"
+        alt="Company logo"
+        class="nav-logo"
+      />
     </a>
 
     <!-- Hamburger button for mobile -->
@@ -72,29 +33,40 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/create-character"
+          <a
+            class="nav-link"
+            routerLink="/create-character"
+            aria-label="Create character"
             >Create Character</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/characters">My Characters</a>
+          <a
+            class="nav-link"
+            routerLink="/characters"
+            aria-label="My characters"
+            >My Characters</a
+          >
         </li>
       </ul>
     </div>
 
     <!-- Logout button stays visible even on mobile -->
-    <div class="navbar-nav">
+    <ol class="navbar-nav justify-content-end ps-sm-4 ps-0">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/profile"
+        <a
+          class="nav-link"
+          routerLink="/profile"
+          aria-label="Go to profile page"
           ><i class="fas fa-user"></i> Profile</a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)="logout()"
+        <a class="nav-link" (click)="logout()" aria-label="Log out"
           ><i class="fas fa-sign-out-alt"></i> Logout</a
         >
       </li>
-    </div>
+    </ol>
   </div>
 </nav>
 
