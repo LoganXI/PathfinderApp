@@ -1,0 +1,41 @@
+/* General form styles */
+h2 {
+  color: #013f06;
+}
+.form-control {
+  border: 1px solid #013f06ce; /* Custom border color */
+  border-radius: 15px; /* Rounded corners */
+}
+.btn-green{
+  background-color: #013f06;
+  color:white;
+}
+
+.section-title {
+  color: #013f06; /* Section title color */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.section-border {
+  border: 1px solid lightgrey;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 10px;
+}
+
+/* Two-column layout for larger screens */
+@media (min-width: 768px) {
+  .row .col-md-6 {
+    padding: 0 15px;
+  }
+}
+
+/* Single column layout for mobile */
+@media (max-width: 767px) {
+  .row .col-md-6 {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+}

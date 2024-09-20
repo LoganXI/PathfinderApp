@@ -5,9 +5,11 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-characters',
-  templateUrl: './characters.component.html'
+  templateUrl: './characters.component.html',
+  styleUrl: './characters.component.scss'
 })
 export class CharactersComponent implements OnInit {
+
   characters: Character[] = [];
 
   constructor(private apiService: ApiService, private router: Router) {}
@@ -41,4 +43,8 @@ export class CharactersComponent implements OnInit {
     this.router.navigate(['/battle'], { state: { character: character } });
   }
 
+
+  goCreation() {
+    this.router.navigate(['/create-character'])
+    }
 }

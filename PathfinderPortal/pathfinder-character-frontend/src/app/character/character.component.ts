@@ -7,6 +7,8 @@ import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-character',
   templateUrl: './character.component.html',
+  styleUrl: './character.component.scss'
+
 })
 export class CharacterComponent implements OnInit {
   character: Character = {

@@ -10,10 +10,15 @@ import { AuthService } from '../services/auth.service';
 
 export class NavbarComponent {
 
+
   constructor(private authService: AuthService, private router: Router) {}
 
   logout() {
     this.authService.logout();  // Clear JWT token
     this.router.navigate(['/login']);  // Redirect to login page
+  }
+
+  isLoginRoute(): boolean {
+    return this.router.url === '/login';
   }
 }

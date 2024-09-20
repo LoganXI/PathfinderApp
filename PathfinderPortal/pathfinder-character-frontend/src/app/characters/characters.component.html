@@ -1,4 +1,4 @@
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <div class="row">
     <div class="col-md-4" *ngFor="let character of characters">
       <div class="card">
@@ -12,6 +12,84 @@
           <button class="btn btn-warning" (click)="startBattle(character)">Battle Mode</button>
           <button class="btn btn-primary" (click)="editCharacter(character)">Modify</button>
           <button class="btn btn-danger" *ngIf="character.id" (click)="deleteCharacter(character.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+</head>
+<div class="container mt-4">
+  <div class="row">
+    <!-- Character cards -->
+    <div class="col-md-4 col-sm-6 mb-3" *ngFor="let character of characters">
+      <div class="card character-card mb-3">
+        <div class="container">
+          <div class="row no-gutters">
+            <!-- Character Info on the left -->
+            <div class="col-4">
+              <div class="card-body ">
+                <h3 class="card-title">{{ character.name }}</h3>
+                <p class="card-text">
+                  <strong>Class:</strong> {{ character.class }}
+                </p>
+                <p class="card-text">
+                  <strong>Level:</strong> {{ character.level }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Character Image on the right -->
+            <div class="card-image col-8">
+              <div class="justify-content-end text-end">
+                <ng-container *ngIf="character.imageBase64; else noImage">
+                  <img
+                    [src]="character.imageBase64"
+                    alt="{{ character.name }}"
+                    class="img-fluid character-image"
+                  />
+                </ng-container>
+
+                <ng-template #noImage>
+                  <i class="fas fa-user fa-6x placeholder-image p-2"></i>
+
+                  <!-- Font Awesome user icon -->
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Folder-tab-like Buttons Attached Outside on the Bottom Left -->
+        <div class="tab-buttons">
+          <button
+            class="btn btn-light"
+            *ngIf="character.id"
+            (click)="deleteCharacter(character.id)"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+          <button class="btn btn-light" (click)="editCharacter(character)">
+            <i class="fas fa-pen"></i>
+          </button>
+          <button class="btn btn-light" (click)="startBattle(character)">
+            <i class="fas fa-play"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add new character card -->
+    <div class="col-md-4 col-sm-6">
+      <div class="card new-character-card text-center">
+        <div class="card-body d-flex align-items-center justify-content-center">
+          <button class="btn btn-lg" (click)="goCreation()">
+            <i class="fas fa-plus"></i>
+          </button>
         </div>
       </div>
     </div>

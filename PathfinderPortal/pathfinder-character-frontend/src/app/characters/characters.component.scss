@@ -1,0 +1,95 @@
+/* General card styles */
+.character-card {
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  border: 2px solid #013f06;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition on hover */
+}
+
+h3 {
+  color: #013f06;
+}
+
+/* Character image */
+.character-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Font Awesome user icon for placeholder image */
+.placeholder-image {
+  color: #013f06ce;
+  margin-top: 1rem;
+  align-items: right;
+}
+
+/* Buttons resembling folder tabs */
+.tab-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.tab-buttons button {
+  background-color: #f8f9fa; /* Light grey background */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-buttons button i {
+  font-size: 1.5rem;
+  color: #013f06; /* Grey icons */
+}
+
+/* New character card styling */
+.new-character-card {
+  height: 100%;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #013f06;
+}
+
+.new-character-card .btn {
+  font-size: 2.5rem;
+  color: #f8f9fa;
+  background-color:  #013f06;
+}
+
+/* Responsive layout for grid */
+@media (max-width: 768px) {
+  .character-card {
+    margin-bottom: 2.5rem; /* Increased space between cards */
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}

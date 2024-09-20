@@ -1,0 +1,169 @@
+/* General styling for the entire login page */
+.login-page {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end; /* Align the overlay to the right */
+  align-items: center;
+  background: url('../../Assets/forest-971855_1280.jpg') no-repeat center center/cover;
+}
+
+.btn-green{
+  background-color: #013f06;
+  color:white;
+}
+/* Styling for the background image */
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Styling for the transparent overlay on the right */
+.overlay {
+  background-color: rgba(117, 117, 117, 0.7); /* Black with 50% transparency */
+  padding: 2rem;
+  border-radius: 10px;
+  width: 35%; /* Adjust width to control the overlay size */
+  height: 100%; /* Full height to stretch the overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for the white rectangle containing the form */
+.login-container {
+  background-color: #fff; /* Solid white background */
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  width: 100%;
+  max-width: 350px; /* Limit the width of the form */
+  text-align: center;
+}
+
+/* Styling for the input fields */
+.form-control.rounded-input {
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin-bottom: 1rem; /* Increase space between inputs */
+  border: 1px solid #013f06ce; /* Custom border color */
+}
+
+/* Styling for the button */
+.btn.rounded-button {
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 1.5rem; /* Increase space between inputs and button */
+}
+
+/* Styling for the phrase text on the left */
+.phrase-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 35%; /* Leave space for the overlay */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  padding-left: 2rem; /* Optional padding from the left */
+}
+
+/* Add background to improve readability */
+.phrase-background {
+  background-color: rgba(0, 0, 0, 0.85); /* Darken the background more for contrast */
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+/* Styling for the phrase text */
+.phrase-text {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  text-align: left;
+  line-height: 1.2;
+  white-space: pre-line; /* Preserve line breaks for the given layout */
+  text-shadow: 3px 3px 7px rgba(0, 0, 0, 1); /* Stronger shadow for readability */
+}
+
+/* Responsive design: Hide phrase and center login form on mobile */
+@media (max-width: 768px) {
+  .phrase-container {
+    display: none; /* Hide phrase on mobile */
+  }
+
+  .login-page {
+    justify-content: center; /* Center the login form */
+  }
+
+  .overlay {
+    width: 90%; /* Make the login form take most of the screen */
+    height: auto; /* Adjust height to fit content */
+    padding: 1.5rem;
+  }
+
+  .login-container {
+    max-width: 100%; /* Use full width */
+    box-shadow: none; /* Remove the shadow for a cleaner mobile look */
+  }
+
+  .form-control.rounded-input {
+    padding: 10px 10px; /* Adjust padding for mobile */
+    margin-bottom: 1rem; /* Maintain space between inputs */
+  }
+
+  .btn.rounded-button {
+    padding: 10px 15px; /* Adjust button size for mobile */
+    margin-top: 1.5rem; /* Maintain space between inputs and button */
+  }
+}
+
+
+// /* Styling for the entire login page */
+// .login-page {
+//   position: relative;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: url('C:/Users/Morgan/Desktop/pathfinderApp/PathfinderPortal/pathfinder-character-frontend/src/app/sources/forest-971855_1280.jpg') no-repeat center center/cover;
+// }
+
+// /* Styling for the background image */
+// .background-image {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1;
+// }
+
+// /* Styling for the overlay */
+// .overlay {
+//   background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+//   padding: 2rem;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   width: 300px; /* Adjust width as necessary */
+//   text-align: center;
+// }
+
+// /* Styling for the input fields */
+// .form-control.rounded-input {
+//   border-radius: 25px;
+//   padding: 10px 15px;
+// }
+
+// /* Styling for the button */
+// .btn.rounded-button {
+//   border-radius: 25px;
+//   padding: 10px 20px;
+//   font-size: 16px;
+// }

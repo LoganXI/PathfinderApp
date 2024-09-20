@@ -1,15 +1,65 @@
-<div class="login-container">
+<!-- <div class="login-container">
   <h2>Login</h2>
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div>
-      <label for="username">Username</label>
-      <input type="text" id="username" required [(ngModel)]="loginData.username" name="username">
+      <label id="lusername" for="username">Username</label>
+      <input aria-labelledby="lusername" type="text" id="username" required [(ngModel)]="loginData.username" name="username">
     </div>
     <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" required [(ngModel)]="loginData.password" name="password">
+      <label id="lpassword" for="password">Password</label>
+      <input aria-labelledby="lpassword" type="password" id="password" required [(ngModel)]="loginData.password" name="password">
     </div>
     <button type="submit">Login</button>
     <p>Don't have an account? <a routerLink="/register">Register here</a></p>
   </form>
+</div> -->
+<div class="login-page">
+  <div class="background-image"></div>
+    <!-- Text block on the left side -->
+    <div class="phrase-container">
+      <p class="phrase-text">
+        LET'S<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<br>
+        A NEW<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADVENTURE
+      </p>
+    </div>
+  <div class="overlay">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+          <label id="lusername" for="username">Username</label>
+          <input aria-labelledby="lusername" type="text" id="username" required [(ngModel)]="loginData.username" name="username" class="form-control rounded-input">
+        </div>
+        <div class="form-group">
+          <label id="lpassword" for="password">Password</label>
+          <input aria-labelledby="lpassword" type="password" id="password" required [(ngModel)]="loginData.password" name="password" class="form-control rounded-input">
+        </div>
+        <button type="submit" class="btn btn-green btn-block rounded-button">Login</button>
+        <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+      </form>
+    </div>
+  </div>
 </div>
+
+<!-- <div class="login-page">
+  <div class="background-image"></div>
+  <div class="overlay">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+          <label id="lusername" for="username">Username</label>
+          <input aria-labelledby="lusername" type="text" id="username" required [(ngModel)]="loginData.username" name="username" class="form-control rounded-input">
+        </div>
+        <div class="form-group">
+          <label id="lpassword" for="password">Password</label>
+          <input aria-labelledby="lpassword" type="password" id="password" required [(ngModel)]="loginData.password" name="password" class="form-control rounded-input">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block rounded-button">Login</button>
+        <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+      </form>
+    </div>
+  </div>
+</div> -->

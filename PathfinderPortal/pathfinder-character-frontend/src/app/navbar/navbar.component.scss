@@ -1,24 +1,126 @@
+// nav {
+//   background-color:  #013f06ce;
+//   color: white;
+//   padding: 10px;
+// }
+
+// nav ul {
+//   list-style-type: none;
+//   display: flex;
+//   gap: 15px;
+// }
+
+// nav ul li {
+//   display: inline;
+// }
+
+// nav ul li a {
+//   color: white;
+//   text-decoration: none;
+// }
+
+// nav ul li a:hover {
+//   text-decoration: underline;
+// }
+/* Navigation styling */
+/* Navigation styling */
+/* General Navbar Styling */
 nav {
-  background-color: #333;
+  background-color: #013f06ce;
   color: white;
   padding: 10px;
+  display: flex;
+  align-items: center;
 }
 
+/* Logo styling */
+.nav-logo img {
+  height: 40px;
+  margin-right: 20px;
+}
+
+/* Navigation list for larger screens */
 nav ul {
   list-style-type: none;
   display: flex;
   gap: 15px;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
 }
 
 nav ul li {
   display: inline;
 }
 
+/* Navigation links */
 nav ul li a {
   color: white;
   text-decoration: none;
+  padding: 8px 15px;
+  font-size: 1.2rem; /* Slightly larger for emphasis */
+  letter-spacing: 0.5px; /* Adds space between letters */
+  font-weight: 500; /* Lighter emphasis than bold */
+  font-family: 'Montserrat', sans-serif; /* Distinctive font */
+  border-radius: 25px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Right menu for Profile and Logout */
+.right-menu {
+  margin-left: auto; /* Push right-menu items (Profile and Logout) to the far right */
+  display: flex;
+  gap: 15px;
+}
+
+/* Icons and text color */
+nav ul li a i {
+  margin-right: 8px; /* Add space between the icon and text */
+  color: white; /* Make the icons white */
+}
+
+/* Hover effect with rounded background */
 nav ul li a:hover {
-  text-decoration: underline;
+  background-color: white;
+  color: #013f06;
+  text-decoration: none;
+}
+
+nav ul li a:hover i {
+  color: #013f06; /* Icon changes color on hover */
+}
+
+/* Styling for Hamburger Menu */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler-icon {
+  background-color: white; /* White hamburger icon */
+}
+
+/* Profile and Logout only visible on larger screens */
+@media (max-width: 768px) {
+  .right-menu li:nth-child(2) { /* Hide Logout on smaller screens */
+    display: none;
+  }
+}
+
+/* Override Bootstrap default styles */
+.navbar-light .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  background-color: white !important;
+  color: #013f06 !important;
+  border-radius: 25px;
+}
+
+.navbar-light .navbar-toggler {
+  color: white;
+}
+
+.navbar-light .navbar-toggler-icon {
+  background-color: white;
 }
