@@ -12,6 +12,7 @@ import { CharacterComponent } from './character/character.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CharactersComponent } from './characters/characters.component';
 import { RegisterComponent } from './register/register.component';
+import { BattleComponent } from './battle/battle.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RegisterComponent } from './register/register.component';
     CharacterComponent,
     NavbarComponent,
     CharactersComponent,
-    RegisterComponent
+    RegisterComponent,
+    BattleComponent
   ],
   imports: [
     BrowserModule,

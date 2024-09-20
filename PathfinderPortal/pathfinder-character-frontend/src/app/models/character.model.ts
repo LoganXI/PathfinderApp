@@ -1,9 +1,12 @@
 export interface Character {
   id?: number;
+  imageBase64: string;
   name: string;
   playerName: string;
   class: string;
   level: number;
+  hitPoints: number;
+  nonLethalHitPoints: number;
   alignment: string;
   deity: string;
   experiencePoints: number;

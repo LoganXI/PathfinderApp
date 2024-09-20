@@ -4,8 +4,12 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">{{ character.name }}</h5>
+          <div *ngIf="character.imageBase64">
+            <img [src]="character.imageBase64" alt="{{ character.name }}" class="img-fluid" />
+          </div>
           <p class="card-text">Class: {{ character.class }}</p>
           <p class="card-text">Level: {{ character.level }}</p>
+          <button class="btn btn-warning" (click)="startBattle(character)">Battle Mode</button>
           <button class="btn btn-primary" (click)="editCharacter(character)">Modify</button>
           <button class="btn btn-danger" *ngIf="character.id" (click)="deleteCharacter(character.id)">Delete</button>
         </div>

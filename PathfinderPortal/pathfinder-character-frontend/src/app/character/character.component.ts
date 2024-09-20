@@ -11,10 +11,13 @@ import { ApiService } from '../services/api.service';
 export class CharacterComponent implements OnInit {
   character: Character = {
     id: 0,
+    imageBase64:'',
     name: '',
     playerName: '',
     class: '',
     level: 0,
+    hitPoints: 0,
+    nonLethalHitPoints: 0,
     alignment: '',
     deity: '',
     experiencePoints: 0,
@@ -84,4 +87,15 @@ export class CharacterComponent implements OnInit {
         );
     }
   }
+  onImageUpload(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.character.imageBase64 = reader.result as string;  // Store the base64 string
+    };
+    reader.readAsDataURL(file);  // Convert file to base64
+  }
+
+
+
 }

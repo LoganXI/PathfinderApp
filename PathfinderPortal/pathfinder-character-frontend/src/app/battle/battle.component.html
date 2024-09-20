@@ -1,0 +1,100 @@
+<div class="container mt-4">
+  <h2>{{ character.name }}'s Battle Stats</h2>
+  <h4>Class: {{ character.class }} | Level: {{ character.level }}</h4>
+  <div *ngIf="character.imageBase64">
+    <img [src]="character.imageBase64" alt="{{ character.name }}" class="img-fluid" />
+  </div>
+  <!-- Health -->
+  <h3>Health</h3>
+  <div class="form-group">
+    <label for="hitPoints">Hit Points</label>
+    <input type="number" [(ngModel)]="character.hitPoints" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="nonLethalHitPoints">Non-Lethal Hit Points</label>
+    <input type="number" [(ngModel)]="character.nonLethalHitPoints" class="form-control" />
+  </div>
+
+  <!-- Stats Table -->
+  <table class="table table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Stat</th>
+        <th>Value</th>
+        <th>Modifier</th>
+        <th>Temp Value</th>
+        <th>Temp Modifier</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Strength</td>
+        <td>{{ character.strength }}</td>
+        <td>+{{ getModifier(character.strength) }}</td>
+        <td><input type="number" [(ngModel)]="tempStrengthValue" class="form-control"></td>
+        <td>+{{ tempStrengthValue ? getModifier(tempStrengthValue) : 0 }}</td>
+      </tr>
+      <tr>
+        <td>Dexterity</td>
+        <td>{{ character.dexterity }}</td>
+        <td>+{{ getModifier(character.dexterity) }}</td>
+        <td><input type="number" [(ngModel)]="tempDexterityValue" class="form-control"></td>
+        <td>+{{ tempDexterityValue ? getModifier(tempDexterityValue) : 0}}</td>
+      </tr>
+      <tr>
+        <td>Constitution</td>
+        <td>{{ character.constitution }}</td>
+        <td>+{{ getModifier(character.constitution) }}</td>
+        <td><input type="number" [(ngModel)]="tempConstitutionValue" class="form-control"></td>
+        <td>+{{ tempConstitutionValue ? getModifier(tempConstitutionValue) : 0 }}</td>
+      </tr>
+      <tr>
+        <td>Intelligence</td>
+        <td>{{ character.intelligence }}</td>
+        <td>+{{ getModifier(character.intelligence) }}</td>
+        <td><input type="number" [(ngModel)]="tempIntelligenceValue" class="form-control"></td>
+        <td>+{{ tempIntelligenceValue ? getModifier(tempIntelligenceValue) : 0 }}</td>
+      </tr>
+      <tr>
+        <td>Wisdom</td>
+        <td>{{ character.wisdom }}</td>
+        <td>+{{ getModifier(character.wisdom) }}</td>
+        <td><input type="number" [(ngModel)]="tempWisdomValue" class="form-control"></td>
+        <td>+{{ tempWisdomValue ? getModifier(tempWisdomValue) : 0 }}</td>
+      </tr>
+      <tr>
+        <td>Charisma</td>
+        <td>{{ character.charisma }}</td>
+        <td>+{{ getModifier(character.charisma) }}</td>
+        <td><input type="number" [(ngModel)]="tempCharismaValue" class="form-control"></td>
+        <td>+{{ tempCharismaValue ? getModifier(tempCharismaValue) : 0 }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Other Stats -->
+  <h3>Other Stats</h3>
+  <p>Armor Class: {{ character.armorClass }}</p>
+  <p>Flat-Footed AC: {{ character.flatFootedAC }}</p>
+  <p>Touch AC: {{ character.touchAC }}</p>
+  <p>Initiative: {{ character.initiative }}</p>
+  <p>Base Attack Bonus: {{ character.baseAttackBonus }}</p>
+
+  <!-- Weapons List -->
+  <h3>Weapons</h3>
+  <ul>
+    <li *ngFor="let weapon of character.weapons?.split(',')">{{ weapon }}</li>
+  </ul>
+
+  <!-- Skills List -->
+  <h3>Skills</h3>
+  <ul>
+    <li *ngFor="let skill of character.skills?.split(',')">{{ skill }}</li>
+  </ul>
+
+  <!-- Abilities List -->
+  <h3>Abilities</h3>
+  <ul>
+    <li *ngFor="let ability of character.specialAbilities?.split(',')">{{ ability }}</li>
+  </ul>
+</div>

@@ -36,4 +36,9 @@ export class CharactersComponent implements OnInit {
     console.log('Navigating with character:', character);
     this.router.navigate(['/create-character'], { state: { character: character } });
   }
+
+  startBattle(character: Character): void {
+    this.router.navigate(['/battle'], { state: { character: character } });
+  }
+
 }

@@ -8,6 +8,8 @@
         public string PlayerName { get; set; }
         public string Class { get; set; }
         public int Level { get; set; }
+        public int HitPoints { get; set; }
+        public int NonLethalHitPoints { get; set; }
         public string Alignment { get; set; }
         public string Deity { get; set; }
         public int ExperiencePoints { get; set; }
@@ -42,6 +44,8 @@
 
         // Special Abilities/Feats
         public string SpecialAbilities { get; set; }  // Comma-separated for simplicity
+
+        public string ImageBase64 { get; set; }  // Add this line for image storage
 
         public int UserId { get; set; } // Foreign key
         public User? User { get; set; }  // Allow null for the User navigation property

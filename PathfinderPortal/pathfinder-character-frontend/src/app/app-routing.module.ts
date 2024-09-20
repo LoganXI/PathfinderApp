@@ -7,8 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { CharactersComponent } from './characters/characters.component';
 import { RegisterComponent } from './register/register.component';
+import { BattleComponent } from './battle/battle.component';
 
 const routes: Routes = [
+
+  { path: 'battle', component: BattleComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'create-character', component: CharacterComponent, canActivate: [AuthGuard] },
