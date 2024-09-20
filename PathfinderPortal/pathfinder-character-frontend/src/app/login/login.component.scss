@@ -1,11 +1,11 @@
-/* General styling for the entire login page */
+
 .login-page {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: flex-end; /* Align the overlay to the right */
   align-items: center;
-  background: url('../../Assets/forest-971855_1280.jpg') no-repeat center center/cover;
+  background: url('../../assets/forest-971855_1280.jpg') no-repeat center center/cover;
 }
 
 .btn-green{
@@ -61,24 +61,37 @@
   margin-top: 1.5rem; /* Increase space between inputs and button */
 }
 
-/* Styling for the phrase text on the left */
-.phrase-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  right: 35%; /* Leave space for the overlay */
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  padding-left: 2rem; /* Optional padding from the left */
-}
-
 /* Add background to improve readability */
 .phrase-background {
   background-color: rgba(0, 0, 0, 0.85); /* Darken the background more for contrast */
   padding: 2rem;
   border-radius: 10px;
+}
+/* Move the phrase to the bottom left */
+.phrase-container {
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Place the phrase at the bottom */
+  width: 35%; /* Ensure it stays on the left side */
+  padding-left: 2rem; /* Optional padding from the left */
+  padding-bottom: 2rem; /* Add some padding from the bottom */
+  display: flex;
+  justify-content: flex-start; /* Align text to the left */
+  align-items: flex-end; /* Align to the bottom */
+}
+
+
+/* Adjust the logo position */
+.logo-container {
+  position: absolute;
+  top: 50%; /* Vertically center the logo */
+  left: 30%; /* Position the logo just to the left of the overlay */
+  transform: translate(-100%, -50%); /* Ensure it's properly aligned left of the overlay */
+}
+
+/* Increase logo size */
+.logo-image {
+  height: 30em; /* Increase the logo size */
 }
 
 /* Styling for the phrase text */
@@ -122,7 +135,55 @@
     padding: 10px 15px; /* Adjust button size for mobile */
     margin-top: 1.5rem; /* Maintain space between inputs and button */
   }
+  /* Add the logo on the left */
+
 }
+.logo-container {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+}
+.logo-image{
+  height: 8em;
+}
+
+// /* Styling for the entire login page */
+// .login-page {
+//   position: relative;
+//   height: 100vh;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   background: url('C:/Users/Morgan/Desktop/pathfinderApp/PathfinderPortal/pathfinder-character-frontend/src/app/sources/forest-971855_1280.jpg') no-repeat center center/cover;
+// }
+
+// /* Styling for the background image */
+// .background-image {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   z-index: -1;
+// }
+
+// /* Styling for the overlay */
+// .overlay {
+//   background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+//   padding: 2rem;
+//   border-radius: 10px;
+//   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+//   width: 300px; /* Adjust width as necessary */
+//   text-align: center;
+// }
+
+// /* Styling for the input fields */
+// .form-control.rounded-input {
+//   border-radius: 25px;
+//   padding: 10px 15px;
+// }
+
+
 
 
 // /* Styling for the entire login page */

@@ -13,9 +13,10 @@
     <p>Don't have an account? <a routerLink="/register">Register here</a></p>
   </form>
 </div> -->
+<!-- LAST SOLUTION
 <div class="login-page">
   <div class="background-image"></div>
-    <!-- Text block on the left side -->
+
     <div class="phrase-container">
       <p class="phrase-text">
         LET'S<br>
@@ -41,7 +42,7 @@
       </form>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- <div class="login-page">
   <div class="background-image"></div>
@@ -63,3 +64,42 @@
     </div>
   </div>
 </div> -->
+<div class="login-page">
+  <div class="background-image"></div>
+
+
+
+    <!-- Text block on the left side -->
+    <div class="phrase-container">
+      <p class="phrase-text">
+        LET'S<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<br>
+        A NEW<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ADVENTURE
+      </p>
+    </div>
+
+   <!-- Add the logo on the left side of the page -->
+   <div class="logo-container">
+    <img [src]="logoBase64" alt="Logo" class="logo-image" />
+  </div>
+
+  <div class="overlay">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group">
+          <label id="lusername" for="username">Username</label>
+          <input aria-labelledby="lusername" type="text" id="username" required [(ngModel)]="loginData.username" name="username" class="form-control rounded-input">
+        </div>
+        <div class="form-group">
+          <label id="lpassword" for="password">Password</label>
+          <input aria-labelledby="lpassword" type="password" id="password" required [(ngModel)]="loginData.password" name="password" class="form-control rounded-input">
+        </div>
+        <button type="submit" class="btn btn-green btn-block rounded-button">Login</button>
+        <p>Don't have an account? <a routerLink="/register">Register here</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+

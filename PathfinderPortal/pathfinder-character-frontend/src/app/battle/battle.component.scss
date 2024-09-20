@@ -1,0 +1,109 @@
+/* General Styling */
+.container {
+  display: grid;
+
+  grid-gap: 20px;
+}
+
+/* Make the layout single-column on mobile */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Input Styles */
+.form-control {
+  border: 2px solid #013f06ce;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Section Titles */
+h3, h2, h4 {
+  color: #013f06;
+  font-weight: bold;
+}
+
+/* Section Borders */
+section {
+  border: 1px solid lightgrey;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Weapons, Skills, and Abilities lists */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ul li {
+  background-color: #f7f7f7;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Table Styles */
+.table {
+  border: 1px solid lightgrey;
+}
+
+.table th, .table td {
+  border: 1px solid lightgrey;
+}
+
+.table th {
+  background-color: #013f06;
+  color: white;
+}
+
+/* Filter button styles */
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+.filter-btn {
+  padding: 15px 25px;
+  border-radius: 25px;
+  border: 2px solid #013f06;
+  color: #013f06;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 10px; /* Space between buttons */
+  font-size: 1.2rem; /* Bigger font size for desktop */
+}
+
+/* Active and Hover State */
+.filter-btn.active {
+  background-color: #013f06;
+  color: white;
+}
+
+.filter-btn:hover {
+  background-color: #013f06;
+  color: white;
+}
+
+/* Responsive for buttons: two in each row for mobile */
+@media (max-width: 768px) {
+  .filter-btn {
+    width: 48%; /* Buttons take 48% width to create two per row */
+    font-size: 1rem; /* Smaller font for mobile */
+  }
+}
+
+@media (min-width: 768px) {
+  .filter-btn {
+    width: auto; /* Allow them to take equal space */
+  }
+}
+
