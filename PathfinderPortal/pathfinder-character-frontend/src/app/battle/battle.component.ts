@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-battle',
   templateUrl: './battle.component.html',
-  styleUrl: './battle.component.scss',
+  styleUrl: './battle.component.scss'
 })
 export class BattleComponent implements OnInit {
   character: Character = {

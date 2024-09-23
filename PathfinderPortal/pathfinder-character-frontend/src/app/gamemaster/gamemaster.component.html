@@ -1,0 +1,65 @@
+<div class="container mt-4">
+  <h2 class="section-title">GameMaster's View</h2>
+
+  <!-- Button to trigger the modal -->
+  <button type="button" class="btn btn-green" data-toggle="modal" data-target="#characterSelectionModal">
+    Add Characters
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="characterSelectionModal" tabindex="-1" role="dialog" aria-labelledby="characterSelectionModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content section-border">
+        <div class="modal-header">
+          <h5 class="modal-title" id="characterSelectionModalLabel">Select Characters</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Show message if no characters are available -->
+          <p *ngIf="availableCharacters.length === 0" class="text-center">There are no more characters</p>
+
+          <!-- List of available characters with checkboxes -->
+          <ul class="list-group" *ngIf="availableCharacters.length > 0">
+            <li class="list-group-item" *ngFor="let character of availableCharacters">
+              <input type="checkbox" [(ngModel)]="character.isSelected" (change)="checkSelection()" />
+              {{ character.name }} ({{ character.class }}, Level {{ character.level }})
+            </li>
+          </ul>
+        </div>
+
+        <div class="modal-footer">
+          <!-- Hide the Add Selected button if no characters are selected -->
+          <button type="button" class="btn btn-green" (click)="addSelectedCharacters()" *ngIf="isAnyCharacterSelected">Add Selected</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Display Selected Characters in Cards -->
+  <div class="row mt-4">
+    <div class="col-md-4" *ngFor="let character of watchedCharacters">
+      <div class="card section-border mb-3">
+        <div class="card-header">
+          <h4>{{ character.name }}</h4>
+          <p>Class: {{ character.class }} | Level: {{ character.level }}</p>
+        </div>
+        <div class="card-body">
+          <img *ngIf="character.imageBase64" [src]="character.imageBase64" alt="{{ character.name }}" class="img-fluid">
+          <p><strong>HP:</strong>
+            <input type="number" [(ngModel)]="character.hitPoints" class="form-control" />
+          </p>
+          <p><strong>Non-Lethal HP:</strong>
+            <input type="number" [(ngModel)]="character.nonLethalHitPoints" class="form-control" />
+          </p>
+          <p><strong>AC:</strong> {{ character.armorClass }}</p>
+          <p><strong>Initiative:</strong> {{ character.initiative }}</p>
+
+          <!-- Remove Character Button -->
+          <button class="btn btn-green" (click)="removeCharacter(character.id)"><i class="fas fa-trash-alt" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,6 +31,22 @@
             <label for="class">Class</label>
             <input type="text" id="class" required [(ngModel)]="character.class" name="class" class="form-control rounded-input" />
           </div>
+          <div class="form-group">
+            <label for="Level">Level</label>
+            <input type="text" id="Level" required [(ngModel)]="character.level" name="Level" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="experiencePoints">Experience Points</label>
+            <input type="text" id="experiencePoints" required [(ngModel)]="character.experiencePoints" name="experiencePoints" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="deity">Deity</label>
+            <input type="text" id="deity" required [(ngModel)]="character.deity" name="deity" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="alignment">Alignment</label>
+            <input type="text" id="alignment" required [(ngModel)]="character.alignment" name="alignment" class="form-control rounded-input" />
+          </div>
         </div>
 
         <div class="section-border">
@@ -104,6 +120,26 @@
           <div class="form-group">
             <label for="armorClass">Armor Class</label>
             <input type="number" id="armorClass" [(ngModel)]="character.armorClass" name="armorClass" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="touchAC">Touch AC</label>
+            <input type="number" id="touchAC" [(ngModel)]="character.touchAC" name="touchAC" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="flatFootedAC">FlatFooted AC</label>
+            <input type="number" id="flatFootedAC" [(ngModel)]="character.flatFootedAC" name="flatFootedAC" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="cmd">CMD</label>
+            <input type="number" id="cmd" [(ngModel)]="character.cmd" name="cmd" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="cmb">CMB</label>
+            <input type="number" id="cmb" [(ngModel)]="character.cmb" name="cmb" class="form-control rounded-input" />
+          </div>
+          <div class="form-group">
+            <label for="baseAttackBonus">Base Attack Bonus</label>
+            <input type="number" id="baseAttackBonus" [(ngModel)]="character.baseAttackBonus" name="baseAttackBonus" class="form-control rounded-input" />
           </div>
         </div>
 

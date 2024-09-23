@@ -107,3 +107,11 @@ ul li {
   }
 }
 
+.fixed-image {
+  max-width: 300px; /* Max width for large images */
+  max-height: 300px; /* Max height for large images */
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}

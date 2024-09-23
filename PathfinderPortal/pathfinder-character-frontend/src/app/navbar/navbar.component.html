@@ -48,11 +48,33 @@
             >My Characters</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/gamemaster"
+            aria-label="GameMaster Tool"
+            >GM Tool</a
+          >
+        </li>
+        <!-- Profile and Logout - Only visible in mobile view -->
+        <li class="nav-item d-lg-none"> <!-- d-lg-none hides on large screens -->
+          <a
+            class="nav-link"
+            routerLink="/profile"
+            aria-label="Go to profile page"
+            ><i class="fas fa-user" aria-hidden="true"></i> Profile</a
+          >
+        </li>
+        <li class="nav-item d-lg-none">
+          <a class="nav-link" routerLink="#" aria-label="Log out" (click)="logout()"
+            ><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a
+          >
+        </li>
       </ul>
     </div>
 
-    <!-- Logout button stays visible even on mobile -->
-    <ol class="navbar-nav justify-content-end ps-sm-4 ps-0">
+    <!-- Profile and Logout - Only visible on larger screens -->
+    <ol class="navbar-nav justify-content-end ps-sm-4 ps-0 d-none d-lg-flex">
       <li class="nav-item">
         <a
           class="nav-link"

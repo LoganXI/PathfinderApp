@@ -1,7 +1,7 @@
 <!-- Filter Buttons at the Top -->
 <div class="container justify-content-center">
   <div
-    class="row row-cols-2 row-cols-md-3 row-cols-lg-6 mt-4 justify-content-center"
+    class="row  mt-4 justify-content-center"
   >
     <button
       class="filter-btn col m-1"
@@ -50,8 +50,11 @@
 
 
 <div class="container mt-4">
+  <div class="row">
+
+
   <!-- Health Section -->
-  <div *ngIf="sections.health" class="row">
+  <div *ngIf="sections.health" class="row col-12 col-md-6">
     <section class="col-12">
       <h2>{{ character.name }}'s Battle Stats</h2>
       <h4>Class: {{ character.class }} | Level: {{ character.level }}</h4>
@@ -59,7 +62,7 @@
         <img
           [src]="character.imageBase64"
           alt="{{ character.name }}"
-          class="img-fluid"
+          class="img-fluid fixed-image"
         />
       </div>
       <h3>Health</h3>
@@ -83,7 +86,7 @@
   </div>
 
   <!-- Stats Section -->
-  <div *ngIf="sections.stats" class="row">
+  <div *ngIf="sections.stats" class="row col-12 col-md-6">
     <section class="col-12">
       <h3>Stats</h3>
       <table class="table table-bordered">
@@ -198,8 +201,8 @@
 
 
   <!-- Other Stats Section -->
-  <div *ngIf="sections.otherStats" class="row">
-    <section class="col-12">
+  <div *ngIf="sections.otherStats" class="row col-12 col-md-6">
+    <section class="col-12 ">
       <h3>Other Stats</h3>
       <p>Armor Class: {{ character.armorClass }}</p>
       <p>Flat-Footed AC: {{ character.flatFootedAC }}</p>
@@ -210,8 +213,8 @@
   </div>
 
   <!-- Weapons Section -->
-  <div *ngIf="sections.weapons" class="row">
-    <section class="col-12">
+  <div *ngIf="sections.weapons" class="row col-12 col-md-6">
+    <section class="col-12 ">
       <h3>Weapons</h3>
       <ul>
         <li *ngFor="let weapon of character.weapons?.split(',')">
@@ -222,7 +225,7 @@
   </div>
 
   <!-- Skills Section -->
-  <div *ngIf="sections.skills" class="row">
+  <div *ngIf="sections.skills" class="row col-12 col-md-6">
     <section class="col-12">
       <h3>Skills</h3>
       <ul>
@@ -232,8 +235,8 @@
   </div>
 
   <!-- Abilities Section -->
-  <div *ngIf="sections.abilities" class="row">
-    <section class="col-12">
+  <div *ngIf="sections.abilities" class="row col-12 col-md-6">
+    <section class="col-12 ">
       <h3>Abilities</h3>
       <ul>
         <li *ngFor="let ability of character.specialAbilities?.split(',')">
@@ -242,4 +245,5 @@
       </ul>
     </section>
   </div>
+</div>
 </div>

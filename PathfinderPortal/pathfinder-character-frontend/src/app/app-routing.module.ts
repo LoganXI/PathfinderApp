@@ -8,9 +8,11 @@ import { AuthGuard } from './auth.guard';
 import { CharactersComponent } from './characters/characters.component';
 import { RegisterComponent } from './register/register.component';
 import { BattleComponent } from './battle/battle.component';
+import { GameMasterComponent } from './gamemaster/gamemaster.component';
 
 const routes: Routes = [
 
+  { path: 'gamemaster', component: GameMasterComponent, canActivate: [AuthGuard] },
   { path: 'battle', component: BattleComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },

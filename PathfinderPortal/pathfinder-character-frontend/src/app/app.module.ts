@@ -13,6 +13,8 @@ import { CharactersComponent } from './characters/characters.component';
 import { RegisterComponent } from './register/register.component';
 import { BattleComponent } from './battle/battle.component';
 import { Base64ImageService } from './services/base64-image.service';
+import { GameMasterComponent } from './gamemaster/gamemaster.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { Base64ImageService } from './services/base64-image.service';
     NavbarComponent,
     CharactersComponent,
     RegisterComponent,
-    BattleComponent
+    BattleComponent,
+    GameMasterComponent
   ],
   imports: [
     BrowserModule,
